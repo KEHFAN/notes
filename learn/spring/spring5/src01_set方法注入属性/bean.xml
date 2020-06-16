@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    演示set方法注入属性-->
+
+    <!--bean标签创建对象
+    id为Book对象名称
+    class为Book类包路径-->
+    <bean id="book" class="com.fkh.spring5.Book">
+
+        <!--property标签注入属性
+        name:类中属性名称
+        value:向属性注入的值-->
+        <property name="bname1" value="诗经"/>
+
+        <!--包含特殊符号-->
+        <!--使用转义符号 &lt; 代表 <
+                        &gt; 代表 >  -->
+        <property name="bname2" value="&lt;&lt;诗经&gt;&gt;"/>
+
+        <!--把带有特殊符号的内容写到 CDATA 中 -->
+        <property name="bname3">
+            <value><![CDATA[<<诗经>>]]></value>
+        </property>
+
+        <!--注入null值-->
+        <property name="bauthor">
+            <null/>
+        </property>
+    </bean>
+</beans>
