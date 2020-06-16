@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    级联赋值：外部bean-->
+    <bean id="empe" class="com.fkh.spring5.Empe">
+        <!--设置两个普通属性-->
+        <property name="ename" value="lucy"/>
+        <property name="gender" value="女"/>
+        <!--设置对象类型属性-->
+        <!--级联赋值：需要在声明者(empe)对应属性设置对象的get方法-->
+        <property name="dept" ref="dept"/>
+        <property name="dept.dname" value="住院部"/>
+    </bean>
+    <bean id="dept" class="com.fkh.spring5.Dept"/>
+</beans>
