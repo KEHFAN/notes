@@ -11,6 +11,10 @@
 
 [搜索过程](spring5/spring5.md)
 ## IOC容器
+所需依赖包[commons-logging]()
+
+IOC基本包：beans,context,core,expression
+
 ## AOP容器
 ## jdbcTemplate
 ## 事务管理
