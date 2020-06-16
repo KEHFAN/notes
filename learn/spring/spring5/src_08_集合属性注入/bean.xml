@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    集合类型属性注入-->
+    <bean id="stu" class="com.fkh.spring5.Stu">
+        <!--1.数组类型属性注入-->
+        <property name="courses">
+            <array>
+                <value>Java课程</value>
+                <value>数学课程</value>
+            </array>
+        </property>
+        <!--2.List集合类型属性注入-->
+        <property name="list">
+            <list>
+                <value>小米</value>
+                <value>张三</value>
+            </list>
+        </property>
+        <!--3.Map集合类型属性注入-->
+        <property name="map">
+            <map>
+                <entry key="A" value="a"/>
+                <entry key="B" value="b"/>
+            </map>
+        </property>
+        <!--4.Set集合类型属性注入-->
+        <property name="set">
+            <set>
+                <value>MySQL</value>
+                <value>Redis</value>
+            </set>
+        </property>
+        <!--5.包含对象的List集合类型属性注入-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--创建多个Course对象-->
+    <bean id="course1" class="com.fkh.spring5.Course">
+        <property name="cname" value="Spring5 框架"/>
+    </bean>
+    <bean id="course2" class="com.fkh.spring5.Course">
+        <property name="cname" value="MyBatis 框架"/>
+    </bean>
+</beans>

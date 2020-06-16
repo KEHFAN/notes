@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--使用util名称空间：需要在上方添加：
+    xmlns:util="http://www.springframework.org/schema/util"
+    以及在xsi:schemaLocation=""中添加：
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd-->
+    <util:list id="list">
+        <value>a</value>
+        <value>b</value>
+        <value>c</value>
+    </util:list>
+
+    <util:list id="list2">
+        <ref bean="course1"/>
+        <ref bean="course2"/>
+    </util:list>
+
+    <bean id="course1" class="com.fkh.spring5.Course">
+        <property name="cname" value="Spring5 框架"/>
+    </bean>
+    <bean id="course2" class="com.fkh.spring5.Course">
+        <property name="cname" value="JQuery 框架"/>
+    </bean>
+
+<!--    集合类型属性注入-->
+    <bean id="stu" class="com.fkh.spring5.Stu">
+        <property name="list" ref="list"/>
+        <property name="courseList" ref="list2"/>
+    </bean>
+</beans>
