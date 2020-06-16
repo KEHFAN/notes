@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--演示有参构造注入属性-->
+    <bean id="orders" class="com.fkh.spring5.Orders">
+        <constructor-arg name="oname" value="电脑"/>
+        <constructor-arg name="address" value="中国"/>
+    </bean>
+</beans>
