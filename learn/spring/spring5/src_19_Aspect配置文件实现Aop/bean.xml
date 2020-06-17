@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1.创建对象-->
+    <bean id="book" class="com.fkh.spring5.Book"/>
+    <bean id="bookProxy" class="com.fkh.spring5.BookProxy"/>
+    <!--2.配置aop增强-->
+    <aop:config>
+        <!--设置切入点（对哪个方法进行增强）-->
+        <aop:pointcut id="p" expression="execution(* com.fkh.spring5.Book.buy(..))"/>
+        <!--配置切面（ref属性指定增强类）-->
+        <aop:aspect ref="bookProxy">
+            <!--增强作用在具体的方法上（对pointcut-ref指定的切入点设置增强方法）-->
+            <aop:before method="before" pointcut-ref="p"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
