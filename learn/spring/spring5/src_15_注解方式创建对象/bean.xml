@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!--演示基于注解设置属性-->
+        <!--首先开启组件扫描(context名称空间)，否则将不识别注解-->
+        <context:component-scan base-package="com.fkh.spring5"/>
+        <!--组件扫描 细节配置-->
+        <!--示例1
+                use-default-filters="false"表示不使用默认filter,自己配置filter
+                context:include-filter设置扫描哪些内容
+                        type="annotation"表示扫描类型为注解
+                        expression="org.springframework.stereotype.Component"表示@Component类型注解
+                即：扫描com.fkh.spring5包下的所有带@Component注解的类
+        -->
+        <!--<context:component-scan base-package="com.fkh.spring5"
+                                use-default-filters="false">
+                <context:include-filter type="annotation"
+                                        expression="org.springframework.stereotype.Component"/>
+        </context:component-scan>-->
+        <!--示例2
+                扫描包中所有类，除了
+                context:exclude-filter: 设置不扫描哪些内容
+                下面配置为：扫描包中所有类，除了带有@Controller注解的类
+        -->
+        <!--<context:component-scan base-package="com.fkh.spring5">
+                <context:exclude-filter type="annotation"
+                                        expression="org.springframework.stereotype.Controller"/>
+        </context:component-scan>-->
+</beans>
